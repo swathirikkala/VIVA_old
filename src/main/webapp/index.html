@@ -1,0 +1,131 @@
+<html>
+<head>
+<script src="./js/jquery-3.4.0.min.js"></script>
+<script src="./js/user.js"></script>
+<script type="text/javascript">
+
+</script>
+<style type="text/css">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.menu {
+  height: 100px;
+  background-color: #B2D6FF;    /* Medium blue */
+}
+
+.sidebar {
+  height: 300px;
+  background-color: #F09A9D;    /* Red */
+}
+
+.content {
+  height: 500px;
+  background-color: #F5CF8E;    /* Yellow */
+}
+
+.footer {
+  height: 200px;
+  background-color: #D6E9FE;    /* Light blue */
+}
+.sidebar {
+  width: 200px;                 /* Add this */
+  height: 300px;
+  background-color: #F09A9D;
+}
+.sidebar {
+  float: left;                  /* Add this */
+  width: 200px;
+  height: 300px;
+  background-color: #F09A9D;
+}
+</style>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+
+    <div class='page'>
+      <div class='menu' style="text-align: center;">VIVA</div>
+      <div class='sidebar' style="display: inline-block; height: 500px;text-align: center;">Menu</div>
+      <div class='content' style="display: inline-block;">
+      <div style="text-align: center;display: none;" id="regDiv">
+		<form method="post" action="javascript:registration();">
+			<table>
+			<tr>
+				<td>First Name</td>
+				<td><input type="text" id="firstName" name="firstName" placeholder="First Name" required="required"/></td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td><input type="text" id="lastName" name="lastName" placeholder="Last Name" required="required"/></td>
+			</tr>
+			<tr>
+				<td>DOB</td>
+				<td><input type="date" id="dob" name="dob" placeholder="Date Of Birth" required="required"/></td>
+			</tr>
+			<tr>
+				<td>Email Id</td>
+				<td><input type="email" id="emailId" name="emailId" placeholder="Email ID" required="required"/></td>
+			</tr>
+			<tr>
+				<td>Department</td>
+				<td><input type="text" id="department" name="department" placeholder="Department" required="required"/></td>
+			</tr>
+			<tr>
+				<td>Designation</td>
+				<td><input type="text" id="designation" name="designation" placeholder="Designation" required="required"/></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" id="password" name="password" placeholder="Password" required="required"/></td>
+			</tr>
+			<tr>
+				<td>Security Question</td>
+				<td><input type="text" id="securityQuestion" name="securityQuestion" placeholder="Security Question" required="required"/></td>
+			</tr>
+			<tr>
+				<td>Security Answer</td>
+				<td><input type="text" id="securityAnswer" name="securityAnswer" placeholder="Security Answer" required="required"/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Register"> &nbsp; <a href="javascript:enableLogin('Login');" >Login</a></td>
+			</tr>
+			</table>
+		</form>
+	</div>
+	
+<!-- 	Login Div -->
+
+<div style="text-align: center;" id="loginDiv">
+		<form method="post" action="javascript:login();">
+			<table>
+			
+			<tr>
+				<td>Email Id</td>
+				<td><input type="email" id="loginEmailId" name="loginEmailId" placeholder="Email ID" required="required"/></td>
+			</tr>
+			
+			<tr>
+				<td>Password</td>
+				<td><input type="password" id="loginPassword" name="loginPassword" placeholder="Password" required="required"/></td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Login"> &nbsp; <a href="javascript:enableLogin('Register');" onclick="">Register</a></td>
+			</tr>
+			</table>
+		</form>
+	</div>
+      </div>
+      <div class='footer' style="text-align: center;">Footer</div>
+    </div>
+ 
+	
+</body>
+</html>

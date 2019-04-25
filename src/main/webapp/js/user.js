@@ -1,11 +1,11 @@
 
 function enableLogin(opName) {
 	if(opName == 'Login'){
-		$("#regDiv").attr('disabled', true);
-		$("#loginDiv").attr('disabled', false);
+		$("#regDiv").hide();
+		$("#loginDiv").show();
 	}else{
-		$("#regDiv").attr('disabled', false);
-		$("#loginDiv").attr('disabled', true);
+		$("#regDiv").show();
+		$("#loginDiv").hide();
 	}
 }
 

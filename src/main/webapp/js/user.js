@@ -92,8 +92,20 @@ function login() {
 					} else {
 						console.log("Sorry, your browser does not support Web Storage...");
 					}
-					alert("User Login Success.");
-					window.location="./project.html"
+                    alert("User Login Success.");
+                    var deptId = responseObject.department;
+                    console.log("Department : " + deptId);
+                    var landingPage = '';
+                    if(deptId == 1){
+                        landingPage = "adminPanel.html";
+                    }else if (deptId == 2){
+                        landingPage = "pmPanel.html";
+                    }else if(deptId==3){
+                        landingPage = "userPanel.html";
+                    }else{
+                        landingPage = "index.html";
+                    }
+					window.location="./"+landingPage;
 				}else{
 					alert("User login Failed.\n please verify credentials");
 				}

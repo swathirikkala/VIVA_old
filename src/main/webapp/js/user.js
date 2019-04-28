@@ -99,9 +99,9 @@ function login() {
                     if(deptId == 1){
                         landingPage = "adminPanel.html";
                     }else if (deptId == 2){
-                        landingPage = "pmPanel.html";
+                        landingPage = "projectManagerPanel.html";
                     }else if(deptId==3){
-                        landingPage = "userPanel.html";
+                        landingPage = "teamMemberPanel.html";
                     }else{
                         landingPage = "index.html";
                     }

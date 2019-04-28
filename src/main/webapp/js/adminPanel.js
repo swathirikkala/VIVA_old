@@ -17,6 +17,7 @@ $("#projects").hide();
 $("#sprints").hide();
 $("#epics").hide();
 $("#userStoriesDiv").hide();
+$("#dashBoard").hide();
 $("#"+funcDiv).show();
 
 }

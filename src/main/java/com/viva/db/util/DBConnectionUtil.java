@@ -35,6 +35,7 @@ public class DBConnectionUtil {
         try {
             
             Class.forName(dbDriver);
+            dbURL+="?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             System.out.println(":::::::::::::::::::::::::::: Diver Loaded : " + dbDriver + " ::::::::::::::::::::::::::::::::::::");
             connection = DriverManager.getConnection(dbURL, userName, password);
             System.out.println(":::::::::::::::::::::::::::: Connection Established : " + dbURL + " ::::::::::::::::::::::::::::::::::::");

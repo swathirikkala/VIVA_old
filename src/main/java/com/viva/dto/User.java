@@ -1,6 +1,6 @@
 package com.viva.dto;
 
-public class User {
+public class User implements VIVA{
 
 	private String firstName;
 	private String lastName;

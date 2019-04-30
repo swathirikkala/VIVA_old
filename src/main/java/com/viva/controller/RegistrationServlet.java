@@ -1,18 +1,14 @@
 package com.viva.controller;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.viva.dao.Response;
 import com.viva.dao.UserDao;
 import com.viva.dto.User;
-import com.viva.util.JSONUtil;
+import com.viva.util.ServiceUtil;
 
 /**
  * Servlet implementation class RegistrationServlet
@@ -34,26 +30,8 @@ public class RegistrationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("....................... User Registration Service Called.......................");
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(request.getInputStream()));
-		String json = "";
-		if (bufferedReader != null) {
-			json = bufferedReader.readLine();
-		}
-		System.out.println("User Registration request JSON : " + json);
+		ServiceUtil.callService(request, response, User.class, UserDao.class, "registerUser");
 
-		User user = JSONUtil.mapper.readValue(json, User.class);
-
-		System.out.println("....................... User Registration Service Marshelled User ->" + user);
-		Response loginResponse = new UserDao().registerUser(user);
-
-		response.setContentType("application/json");
-		JSONUtil.mapper.writeValue(response.getOutputStream(), loginResponse);
-
-		System.out.println("....................... User Registration Service Completed.......................");
-		System.err.println(loginResponse);
 	}
 
 	/**

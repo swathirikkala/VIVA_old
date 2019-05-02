@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.viva.dao.UserDao;
+import com.viva.dao.util.UserMethods;
 import com.viva.dto.User;
 import com.viva.util.ServiceUtil;
 
@@ -31,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		ServiceUtil.callService(request, response, User.class, UserDao.class, "login");
+		ServiceUtil.callService(request, response, User.class, UserDao.class, UserMethods.login);
 
 	}
 

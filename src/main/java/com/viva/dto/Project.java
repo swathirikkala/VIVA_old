@@ -6,7 +6,8 @@ public class Project {
 	private String priority;
 	private int estimatedHours;
 	private String consumedHours;
-	private String managerId;
+	private String assignedManager;
+	private String createdBy;
 
 	public Project() {
 		super();
@@ -14,14 +15,15 @@ public class Project {
 	}
 
 	public Project(String projectId, String projectName, String priority, int estimatedHours, String consumedHours,
-			String managerId) {
+			String assignedManager, String createdBy) {
 		super();
 		this.projectId = projectId;
 		this.projectName = projectName;
 		this.priority = priority;
 		this.estimatedHours = estimatedHours;
 		this.consumedHours = consumedHours;
-		this.managerId = managerId;
+		this.assignedManager = assignedManager;
+		this.createdBy = createdBy;
 	}
 
 	public String getProjectId() {
@@ -64,19 +66,27 @@ public class Project {
 		this.consumedHours = consumedHours;
 	}
 
-	public String getManagerId() {
-		return managerId;
+	public String getAssignedManager() {
+		return assignedManager;
 	}
 
-	public void setManagerId(String managerId) {
-		this.managerId = managerId;
+	public void setAssignedManager(String assignedManager) {
+		this.assignedManager = assignedManager;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Override
 	public String toString() {
 		return "Project [projectId=" + projectId + ", projectName=" + projectName + ", priority=" + priority
-				+ ", estimatedHours=" + estimatedHours + ", consumedHours=" + consumedHours + ", managerId=" + managerId
-				+ "]";
+				+ ", estimatedHours=" + estimatedHours + ", consumedHours=" + consumedHours + ", assignedManager="
+				+ assignedManager + ", createdBy=" + createdBy + "]";
 	}
 
 }

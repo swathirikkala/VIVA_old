@@ -31,7 +31,7 @@ public class RegistrationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ServiceUtil.callService(request, response, User.class, UserDao.class, UserMethods.registerUser);
+		ServiceUtil.callService(request, response, User.class, UserDao.class, UserMethods.registerUser.name());
 
 	}
 

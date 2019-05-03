@@ -39,6 +39,12 @@
   	<servlet-class>com.viva.controller.DBServlet</servlet-class>
     <load-on-startup>0</load-on-startup>
   </servlet>
+  <servlet>
+  	<servlet-name>addProject</servlet-name>
+  	<display-name>addProject</display-name>
+  	<description></description>
+  	<servlet-class>com.viva.controller.AddProjectServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>userRegistration</servlet-name>
   	<url-pattern>/userRegistration</url-pattern>
@@ -50,5 +56,9 @@
   <servlet-mapping>
   	<servlet-name>DBConnection</servlet-name>
   	<url-pattern>/DBConnection</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>addProject</servlet-name>
+  	<url-pattern>/addProject</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -48,7 +48,7 @@ public class DBConnectionUtil {
 
     public static int insert(String query) {
         int response = 0;
-        Logger.getLogger(DBConnectionUtil.class.getName()).log(Level.INFO, query, query);
+        Logger.getLogger(DBConnectionUtil.class.getName()).log(Level.FINE, query);
         try {
             statement = connection.createStatement();
             response = statement.executeUpdate(query);

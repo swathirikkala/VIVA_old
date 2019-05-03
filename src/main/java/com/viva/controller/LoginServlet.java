@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		ServiceUtil.callService(request, response, User.class, UserDao.class, UserMethods.login);
+		ServiceUtil.callService(request, response, User.class, UserDao.class, UserMethods.login.name());
 
 	}
 

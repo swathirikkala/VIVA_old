@@ -13,12 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.viva.dao.Response;
-import com.viva.dao.util.UserMethods;
 
 public class ServiceUtil {
 
 	public static <DTO, DAO> void callService(HttpServletRequest request, HttpServletResponse response, Class<DTO> dto,
-			Class<DAO> dao, UserMethods methodName) throws ServletException, IOException {
+			Class<DAO> dao, String methodName) throws ServletException, IOException {
 		try {
 			
 			Logger.getLogger(ServiceUtil.class.getName()).log(Level.INFO,
@@ -37,7 +36,7 @@ public class ServiceUtil {
 
 			Logger.getLogger(ServiceUtil.class.getName()).log(Level.INFO, "Request Object Class name :: " + className);
 			
-			Method method = dao.getDeclaredMethod(methodName.name(), new Class[] { dto });
+			Method method = dao.getDeclaredMethod(methodName, new Class[] { dto });
 			Object obj = dao.newInstance();
 			Response serviceResponse = (Response) method.invoke(obj, new Object[] { requestObject });
 

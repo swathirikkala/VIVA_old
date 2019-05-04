@@ -64,12 +64,13 @@ public class DBConnectionUtil {
                 }
             }
         }
+        System.out.println("\n Recode insertion response in DBConnectionUtil ::::: " + response);
         return response;
     }
 
     public static ResultSet getData(String query){
         try {
-             Logger.getLogger(DBConnectionUtil.class.getName()).log(Level.INFO, query, query);
+             System.out.println("\n Generated Query : \n" + query +"\n");
             statement= connection.createStatement();
             resultSet = statement.executeQuery(query);
         } catch (SQLException ex) {

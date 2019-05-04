@@ -87,15 +87,17 @@ function login() {
 					if (typeof(Storage) !== "undefined") {
 						// Store
 						var responseObject =JSON.parse(JSON.stringify(data.responseObject));
+	                    var deptId = responseObject.department;
 						sessionStorage.setItem("userId", responseObject.emailId);
-						console.log("User Id stored in session storage. " + sessionStorage.getItem("emailId"));
+						sessionStorage.setItem("deptId", deptId);
+						console.log("User Id stored in session storage. " + sessionStorage.getItem("userId"));
+	                    console.log("Department : " + deptId);
 					} else {
 						console.log("Sorry, your browser does not support Web Storage...");
 					}
                     alert("User Login Success.");
-                    var deptId = responseObject.department;
-                    console.log("Department : " + deptId);
                     var landingPage = '';
+                    getUsers();
                     if(deptId == 1){
                         landingPage = "adminPanel.html";
                     }else if (deptId == 2){
@@ -122,9 +124,9 @@ function login() {
 function getUsers(){
 	try {
 		var user = new Object();
-		user.userId = sessionStorage.getItem("userId");
+		user.emailId = sessionStorage.getItem("userId");
 		$.ajax({
-			url : "./GetUserIds",
+			url : "./getAllUsers",
 			type : 'POST',
 			dataType : 'json',
 			data : JSON.stringify(user),
@@ -135,13 +137,7 @@ function getUsers(){
 				var respJSONString = JSON.stringify(data);
 				console.log(respJSONString);
 				var jsonObj = JSON.parse(respJSONString);
-				console.log(jsonObj.responseStatus + " : " + jsonObj.responseMessage);
-				$('#newMailSharingUserIds').empty();
-				$.each(data.responseBody, function (i, item) {
-					var option = new Option(item, item); 
-					$('#newMailSharingUserIds').append('<option>' + item + '</option>');
-
-				});
+                console.log(jsonObj.responseCode + " : " + jsonObj.responseMessage);
 			},
 
 			error : function(data, status, er) {

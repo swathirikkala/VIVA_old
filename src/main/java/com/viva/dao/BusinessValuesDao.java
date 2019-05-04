@@ -37,7 +37,6 @@ public class BusinessValuesDao {
 	}
 	public Response getBusinessValues(BusinessValue businessValue ) {
 		Response response =null;
-		
 		return response;
 	}
 }

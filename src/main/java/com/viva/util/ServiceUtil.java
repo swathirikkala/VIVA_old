@@ -20,8 +20,7 @@ public class ServiceUtil {
 			Class<DAO> dao, String methodName) throws ServletException, IOException {
 		try {
 			
-			Logger.getLogger(ServiceUtil.class.getName()).log(Level.INFO,
-					methodName + " Service Got Called.......................");
+			System.out.println("\n"+methodName + " Service Got Called.......................");
 			
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(request.getInputStream()));
 			String json = "";
@@ -32,15 +31,15 @@ public class ServiceUtil {
 			Logger.getLogger(ServiceUtil.class.getName()).log(Level.INFO, methodName + " request JSON : " + json);
 
 			DTO requestObject = JSONUtil.mapper.readValue(json, dto);
-			String className = requestObject.getClass().getName();
+//			String className = requestObject.getClass().getName();
 
-			Logger.getLogger(ServiceUtil.class.getName()).log(Level.INFO, "Request Object Class name :: " + className);
+			System.out.println("\n Request Object in ServiceUtil  :: " + requestObject);
 			
 			Method method = dao.getDeclaredMethod(methodName, new Class[] { dto });
 			Object obj = dao.newInstance();
 			Response serviceResponse = (Response) method.invoke(obj, new Object[] { requestObject });
 
-			Logger.getLogger(ServiceUtil.class.getName()).log(Level.INFO, "serviceResponse  ::: " + serviceResponse);
+			System.out.println("\n Response Object in  ServiceUtil ::: " + serviceResponse);
 			
 			response.setContentType("application/json");
 			JSONUtil.mapper.writeValue(response.getOutputStream(), serviceResponse);

@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `vivita` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `vivita`;
 -- MySQL dump 10.13  Distrib 8.0.13, for macos10.14 (x86_64)
 --
 -- Host: localhost    Database: vivita
@@ -28,7 +26,8 @@ CREATE TABLE `business_values` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -283,7 +282,8 @@ CREATE TABLE `priority` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -309,12 +309,15 @@ CREATE TABLE `project` (
   `priority` int(11) DEFAULT NULL,
   `estimated_hours` int(11) DEFAULT NULL,
   `hours_consumed` int(11) DEFAULT NULL,
-  `manager_name` varchar(100) DEFAULT NULL,
+  `manager_name` varchar(100) NOT NULL,
+  `created_by` varchar(100) NOT NULL,
   PRIMARY KEY (`project_id`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `Manager_fk_idx` (`manager_name`),
-  CONSTRAINT `Manager_fk` FOREIGN KEY (`manager_name`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `created_by_fk_idx` (`created_by`),
+  CONSTRAINT `Manager_fk` FOREIGN KEY (`manager_name`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `created_by_fk` FOREIGN KEY (`created_by`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,6 +326,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
+INSERT INTO `project` VALUES (1,'sample project',1,100,0,'xyz@gmail.com','email@mail.com'),(2,'Authentication',1,30,0,'email@mail.com','email@mail.com');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -364,15 +368,16 @@ DROP TABLE IF EXISTS `sprint`;
 CREATE TABLE `sprint` (
   `sprint_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
-  `project_id` varchar(45) DEFAULT NULL,
+  `project_id` int(11) DEFAULT NULL,
   `priority` int(11) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
   `hours_estimation` int(11) DEFAULT NULL,
   `hours_consumed` int(11) DEFAULT NULL,
-  `viva` float DEFAULT NULL,
   PRIMARY KEY (`sprint_id`),
   KEY `Sprint_project_pk_idx` (`project_id`),
-  CONSTRAINT `sprint_project_pk` FOREIGN KEY (`project_id`) REFERENCES `project` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `sprint_project_pk` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -381,6 +386,7 @@ CREATE TABLE `sprint` (
 
 LOCK TABLES `sprint` WRITE;
 /*!40000 ALTER TABLE `sprint` DISABLE KEYS */;
+INSERT INTO `sprint` VALUES (2,'login sprint',2,1,NULL,NULL,22,0),(3,'sprint 2',2,1,NULL,NULL,22,0);
 /*!40000 ALTER TABLE `sprint` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,6 +424,33 @@ INSERT INTO `user` VALUES ('email@mail.com','swathi','rikkala','2019-04-09',1,'p
 UNLOCK TABLES;
 
 --
+-- Table structure for table `user_invite`
+--
+
+DROP TABLE IF EXISTS `user_invite`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `user_invite` (
+  `user_id` varchar(100) NOT NULL,
+  `role` int(11) NOT NULL,
+  `invited_by` varchar(100) NOT NULL,
+  `invited_on` datetime DEFAULT NULL,
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
+  KEY `invited_by_fk_idx` (`invited_by`),
+  CONSTRAINT `invited_by_fk` FOREIGN KEY (`invited_by`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_invite`
+--
+
+LOCK TABLES `user_invite` WRITE;
+/*!40000 ALTER TABLE `user_invite` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_invite` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_story`
 --
 
@@ -426,12 +459,12 @@ DROP TABLE IF EXISTS `user_story`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `user_story` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  `description` text,
-  `epic_id` int(11) DEFAULT NULL,
-  `hours_estimated` int(11) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `epic_id` int(11) NOT NULL,
+  `hours_estimated` int(11) NOT NULL,
   `hours_consumed` int(11) DEFAULT NULL,
-  `owner` varchar(100) DEFAULT NULL,
+  `owner` varchar(100) NOT NULL,
   `state` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_story_epic_fk_idx` (`epic_id`),
@@ -459,4 +492,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-28  9:58:45
+-- Dump completed on 2019-05-05 22:16:05

@@ -1,36 +1,23 @@
 package com.viva.dto;
 
 public class Project {
-	private String projectId;
+	private int projectId;
 	private String projectName;
-	private String priority;
+	private int priority;
 	private int estimatedHours;
-	private String consumedHours;
+	private int consumedHours;
 	private String assignedManager;
 	private String createdBy;
 
 	public Project() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Project(String projectId, String projectName, String priority, int estimatedHours, String consumedHours,
-			String assignedManager, String createdBy) {
-		super();
-		this.projectId = projectId;
-		this.projectName = projectName;
-		this.priority = priority;
-		this.estimatedHours = estimatedHours;
-		this.consumedHours = consumedHours;
-		this.assignedManager = assignedManager;
-		this.createdBy = createdBy;
-	}
-
-	public String getProjectId() {
+	public int getProjectId() {
 		return projectId;
 	}
 
-	public void setProjectId(String projectId) {
+	public void setProjectId(int projectId) {
 		this.projectId = projectId;
 	}
 
@@ -42,11 +29,11 @@ public class Project {
 		this.projectName = projectName;
 	}
 
-	public String getPriority() {
+	public int getPriority() {
 		return priority;
 	}
 
-	public void setPriority(String priority) {
+	public void setPriority(int priority) {
 		this.priority = priority;
 	}
 
@@ -58,11 +45,11 @@ public class Project {
 		this.estimatedHours = estimatedHours;
 	}
 
-	public String getConsumedHours() {
+	public int getConsumedHours() {
 		return consumedHours;
 	}
 
-	public void setConsumedHours(String consumedHours) {
+	public void setConsumedHours(int consumedHours) {
 		this.consumedHours = consumedHours;
 	}
 
@@ -89,4 +76,5 @@ public class Project {
 				+ assignedManager + ", createdBy=" + createdBy + "]";
 	}
 
+	
 }

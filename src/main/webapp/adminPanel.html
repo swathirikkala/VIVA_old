@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>W3.CSS Template</title>
+<title>Admin Panel</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./css/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-        <script src="./js/jquery-3.4.0.min.js"></script>
-        <script src="./js/adminPanel.js"></script>
-		<link rel="stylesheet" href="./css/modal.css">
-        <script src="./js/modal.js"></script>
+<link rel="stylesheet" href="./css/w3.css">
+<link rel="stylesheet" href="./css/modal.css">
+<script src="./js/jquery-3.4.0.min.js"></script>
+<script src="./js/modal.js"></script>
+<script src="./js/project.js"></script>
+<script src="./js/sprint.js"></script>
+<script src="./js/adminPanel.js"></script>
+
+<!-- Table css -->
+
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/modal.css">
+
+<!-- Table css end -->
+<!-- Table JS -->
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+<!-- Table JS end -->
+
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
@@ -24,15 +60,15 @@ body {font-size:16px;}
     <h3 class="w3-padding-64"><b>VIVA<br>Application</b></h3>
   </div>
   <div class="w3-bar-block">
-    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
-    <a href="#contact" onclick="loadFunctionalityDiv('stakeHolders')" class="w3-bar-item w3-button w3-hover-white">Stake Holders</a>
-    <a href="#contact" onclick="loadFunctionalityDiv('projectManagers')" class="w3-bar-item w3-button w3-hover-white">Project Managers</a>
-    <a href="#contact" onclick="loadFunctionalityDiv('technicalTeam')" class="w3-bar-item w3-button w3-hover-white">Technical Team</a>
-    <a href="#contact" onclick="loadFunctionalityDiv('projects')" class="w3-bar-item w3-button w3-hover-white">Projects</a>
-    <a href="#contact" onclick="loadFunctionalityDiv('sprints')" class="w3-bar-item w3-button w3-hover-white">Sprints</a>
-    <a href="#contact" onclick="loadFunctionalityDiv('epics')" class="w3-bar-item w3-button w3-hover-white">Epics</a>
-    <a href="#contact" onclick="loadFunctionalityDiv('userStories')" class="w3-bar-item w3-button w3-hover-white">User Stories</a>
-    <a href="#contact" onclick="loadFunctionalityDiv('dashBoard')" class="w3-bar-item w3-button w3-hover-white">Dash Board</a>
+    <a href="javascript:void(0);" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+    <a href="javascript:void(0);" onclick="loadFunctionalityDiv('stakeHolders')" class="w3-bar-item w3-button w3-hover-white">Stake Holders</a>
+    <a href="javascript:void(0);" onclick="loadFunctionalityDiv('projectManagers')" class="w3-bar-item w3-button w3-hover-white">Project Managers</a>
+    <a href="javascript:void(0);" onclick="loadFunctionalityDiv('technicalTeam')" class="w3-bar-item w3-button w3-hover-white">Technical Team</a>
+    <a href="javascript:void(0);" onclick="loadFunctionalityDiv('projects')" class="w3-bar-item w3-button w3-hover-white">Projects</a>
+    <a href="javascript:void(0);" onclick="loadFunctionalityDiv('sprints')" class="w3-bar-item w3-button w3-hover-white">Sprints</a>
+    <a href="javascript:void(0);" onclick="loadFunctionalityDiv('epics')" class="w3-bar-item w3-button w3-hover-white">Epics</a>
+    <a href="javascript:void(0);" onclick="loadFunctionalityDiv('userStories')" class="w3-bar-item w3-button w3-hover-white">User Stories</a>
+    <a href="javascript:void(0);" onclick="loadFunctionalityDiv('dashBoard')" class="w3-bar-item w3-button w3-hover-white">Dash Board</a>
   </div>
 </nav>
 
@@ -76,30 +112,13 @@ body {font-size:16px;}
   <!-- Projects  -->
   <div class="w3-container" id="projects" style="margin-top:75px;display: none;">
     <h1 class="w3-xxxlarge w3-text-red"><b>Projects.</b></h1>
-    
-    <p><button onclick="javascript:openModal('addProject')" style="width:auto;">Add Project</button></p>
-		<div id="projectsDiv">
-			<table border="1" class="scroll">
-				<thead>
-				  <tr>
-				    <th>Project Id</th>
-				    <th>Project Name</th>
-				    <th>Priority</th>
-				    <th>Estimated Hours</th>
-				    <th>Consumed Hours</th>
-				    <th>Manage Name</th>
-				  </tr>
-				</thead>
-				<tbody id="projectsTableBody" >
-				</tbody>
-			</table>
-		</div>
+	<div id="projectsDiv">
+	</div>
   </div>
   <!-- Sprints  -->
   <div class="w3-container" id="sprints" style="margin-top:75px;display: none;">
     <h1 class="w3-xxxlarge w3-text-red"><b>Sprints.</b></h1>
     
-    <p><button onclick="javascript:openModal('addSprint')" style="width:auto;">Add Sprint</button></p>
 		<div id="sprintsDiv">
 		</div>
   </div>
@@ -127,6 +146,7 @@ body {font-size:16px;}
 		<div id="dashBoardDiv">
 		</div>
   </div>
+
 <!-- End page content -->
 </div>
 

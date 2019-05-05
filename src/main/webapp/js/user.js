@@ -84,6 +84,7 @@ function login() {
                 console.log(jsonObj.responseCode == 1);
 				if(jsonObj.responseCode == 1){
 					// Check browser support for session storage
+					
 					if (typeof(Storage) !== "undefined") {
 						// Store
 						var responseObject =JSON.parse(JSON.stringify(data.responseObject));
@@ -97,7 +98,6 @@ function login() {
 					}
                     alert("User Login Success.");
                     var landingPage = '';
-                    getUsers();
                     if(deptId == 1){
                         landingPage = "adminPanel.html";
                     }else if (deptId == 2){
@@ -107,7 +107,8 @@ function login() {
                     }else{
                         landingPage = "index.html";
                     }
-					window.location="./"+landingPage;
+                    getUsers(landingPage);
+					
 				}else{
 					alert("User login Failed.\n please verify credentials");
 				}
@@ -121,7 +122,7 @@ function login() {
 		alert(ex);
 	}
 }
-function getUsers(){
+function getUsers(landingPage){
 	try {
 		var user = new Object();
 		user.emailId = sessionStorage.getItem("userId");
@@ -138,6 +139,17 @@ function getUsers(){
 				console.log(respJSONString);
 				var jsonObj = JSON.parse(respJSONString);
                 console.log(jsonObj.responseCode + " : " + jsonObj.responseMessage);
+                //var userNames = new Map();
+                $.each(data.responseObject, function (i, user) {
+                	var name = user.firstName + " " + user.lastName;
+                	var emailId = user.emailId;
+                	//userNames.set(emailId , name);
+                	sessionStorage.setItem(emailId, name);
+                });
+                //console.log("User map :" + userNames);
+                //sessionStorage.setItem("userNames", userNames);
+                
+                window.location="./"+landingPage;
 			},
 
 			error : function(data, status, er) {

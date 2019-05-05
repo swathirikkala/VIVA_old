@@ -11,7 +11,7 @@ public class ResponseBuilder {
 		Response response = new Response();
 		if (responseCode == 0) {
 			response.setResponseCode(0);
-			response.setResponseMessage(responseType +" : Please check given details");
+			response.setResponseMessage(responseType +" : No record found with given criteria");
 			response.setResponseObject(responseObject);
 		} else if (responseCode == -1) {
 			response.setResponseCode(-1);

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button id="addSprintBtn" onclick="displayPopup('sprintRegistrationDiv')" style="width:auto;">Add Sprint</button>
+
+<button id="addSprintEpicBtn" onclick="addSprintEpic()" style="width:auto;">Add Epic</button>
+<div id="sprintRegistrationDiv" class="modal">
+  <span onclick="closePopup('sprintRegistrationDiv')" class="close" title="Close Modal">&times;</span>
+	<form class="modal-content" method="post" action="javascript:addSprint();">
+    <div class="container">
+      <h1>Add Sprint</h1>
+      <p>Please fill in this form to create a sprint.</p>
+      <hr>
+      <label for="sprintName"><b>Sprint Name</b></label><label style="color: red;">&nbsp;*</label>
+      <input type="text" placeholder="Sprint Name" name="sprintName" id="sprintName" required>
+
+
+      <label for="projectName"><b>Project Name</b></label><label style="color: red;">&nbsp;*</label>
+      <select id="projectName" name="projectName" required>
+      </select>
+      
+
+      <label for="sprintPriority"><b>Priority</b></label><label style="color: red;">&nbsp;*</label>
+      <select id="sprintPriority" name="sprintPriority" required>
+      	<option value="1">1</option>
+      	<option value="2">2</option>
+      	<option value="3">3</option>
+      	<option value="4">4</option>
+      	<option value="5">5</option>
+      </select>
+
+      <label for="estimatedHours"><b>Estimated Hours</b></label><label style="color: red;">&nbsp;*</label>
+      <input type="number" placeholder="Estimated Hours" name="estimatedHours" id="estimatedHours" required>
+	
+	<label for="estimatedHours"><b>Start Date</b></label><label style="color: red;">&nbsp;*</label>
+      <input type="date" placeholder="Start Date" name="startDate" id="startDate" required>
+	
+	 <label for="endDate"><b>End Date</b></label><label style="color: red;">&nbsp;*</label>
+      <input type="date" placeholder="End Date" name="endDate" id="endDate" required>
+
+      <div class="clearfix">
+        <button type="button" onclick="closePopup('sprintRegistrationDiv')" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Add Sprint</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="limiter">
+				<div class="table100 ver2 m-b-110" style="overflow:scroll; max-height:500px; min-height:0px; overflow-x: none;">
+					<table data-vertable="ver2">
+						<thead>
+							<tr class="row100 head">
+								<th class="column100 column1" data-column="column1">ID</th>
+								<th class="column100 column2" data-column="column2">Sprint Name</th>
+								<th class="column100 column1" data-column="column1">Project Name</th>
+								<th class="column100 column1" data-column="column1">Priority </th>
+								<th class="column100 column1" data-column="column1">Start Date</th>
+								<th class="column100 column6" data-column="column6">End Date</th>
+								<th class="column100 column7" data-column="column7">Hours Estimated</th>
+								<th class="column100 column7" data-column="column7">Hours Consumed</th>
+							</tr>
+						</thead>
+						<tbody id="sprintsBody">
+							
+						</tbody>
+					</table>
+				</div>
+	</div>
+
+</body>
+</html>

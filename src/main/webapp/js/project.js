@@ -61,7 +61,7 @@ function displayProjects(){
 					projectRow+='<td class="column100 column1" data-column="column1">';
 					console.log(JSON.stringify(project));
 					console.log(JSON.stringify(project));
-					projectRow+='<a href="javascript:void(0);" onClick="javascript:updateProject();">'+project.projectId+'</a></td>';
+					projectRow+='<a href="javascript:void(0);" onClick="javascript:updateProject();">PRJ'+project.projectId+'</a></td>';
 					projectRow+='<td class="column100 column2" data-column="column2">'+project.projectName+'</td>';
 					projectRow+='<td class="column100 column1" data-column="column1">'+project.priority+'</td>';
 					projectRow+='<td class="column100 column1" data-column="column1">'+project.estimatedHours+'</td>';
@@ -85,10 +85,10 @@ function displayProjects(){
 	}
 }
 function updateProject(){
-	displayPopup('projectRegistrationDiv');
-	$("#projectIdFieldDiv").show();
-	$("#updateProjectBtn").show();
-	$("#deleteProjectBtn").show();
-	$("#addProjectBtn").hide();
+//	displayPopup('projectRegistrationDiv');
+//	$("#projectIdFieldDiv").show();
+//	$("#updateProjectBtn").show();
+//	$("#deleteProjectBtn").show();
+//	$("#addProjectBtn").hide();
 	
 }

@@ -64,7 +64,7 @@ function displaySprints(){
 					var sprintRow = '<tr class="row100">';
 					sprintRow+='<td class="column100 column1" data-column="column1">';
 
-					sprintRow+='<a href="javascript:void(0);" onClick="javascript:updateSprint();">'+sprint.sprintId+'</a></td>';
+					sprintRow+='<a href="javascript:void(0);" onClick="javascript:updateSprint();">SP'+sprint.sprintId+'</a></td>';
 					sprintRow+='<td class="column100 column2" data-column="column2">'+sprint.sprintName+'</td>';
 					var pn = sessionStorage.getItem(sprint.projectId);
 					sprintRow+='<td class="column100 column1" data-column="column1">'+pn+'</td>';

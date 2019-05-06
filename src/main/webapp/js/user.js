@@ -96,7 +96,7 @@ function login() {
 					} else {
 						console.log("Sorry, your browser does not support Web Storage...");
 					}
-                    alert("User Login Success.");
+                 //   alert("User Login Success.");
                     var landingPage = '';
                     if(deptId == 1){
                         landingPage = "adminPanel.html";

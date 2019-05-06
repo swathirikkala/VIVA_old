@@ -29,7 +29,7 @@ function loadFunctionalityDiv(funcDiv) {
 
 function loadSprintForm(){
 	$("#sprints").show();
-	$("#sprintsDiv").load('./sprintHome.html');
+	$("#sprintsDiv").load('./sprint.html');
 	displaySprints();
 	try {
 		var project = new Object();
@@ -60,9 +60,9 @@ function loadSprintForm(){
 					console.log("projectName option : " + project);
 					sessionStorage.setItem(project.projectId,project.projectName);
 					$('#projectName').append('<option value='+project.projectId+'>' + project.projectName + '</option>');
-
+					console.log('<option value='+project.projectId+'>' + project.projectName + '</option>');
 				});
-				console.log("projectName value : " + $("#projectName").val());
+				console.log("projectName value in sprint page default : " + $("#projectName").val());
 			},
 
 			error : function(data, status, er) {

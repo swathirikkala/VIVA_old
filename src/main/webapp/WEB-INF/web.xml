@@ -6,7 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
     <context-param>
     <param-name>DB_URL</param-name>
-    <param-value>jdbc:mysql://localhost:3306/vivita</param-value>
+    <param-value>jdbc:mysql://localhost:3306/vivata</param-value>
   </context-param>
   <context-param>
     <param-name>DB_DRIVER</param-name>
